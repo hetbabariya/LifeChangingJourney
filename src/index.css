@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-primary-50 to-secondary-50 min-h-screen;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-3 px-6 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold py-3 px-6 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white font-semibold py-3 px-6 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 border border-gray-100;
+  }
+  
+  .card-hover {
+    @apply hover:transform hover:-translate-y-2 hover:shadow-large;
+  }
+  
+  .progress-bar {
+    @apply w-full h-2 bg-gray-200 rounded-full overflow-hidden shadow-inner;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full transition-all duration-500 ease-out relative;
+  }
+  
+  .progress-shine {
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30;
+  }
+  
+  .option-card {
+    @apply bg-white border-2 border-gray-200 rounded-xl p-4 cursor-pointer transition-all duration-300 hover:border-primary-300 hover:shadow-medium;
+  }
+  
+  .option-card.selected-option {
+    @apply border-primary-500 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-medium ring-2 ring-primary-200 ring-opacity-50;
+  }
+  
+  .option-card:hover {
+    @apply transform -translate-y-1;
+  }
+  
+  .test-card {
+    @apply card card-hover p-6 text-center cursor-pointer;
+  }
+  
+  .test-card.active {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-large;
+  }
+  
+  .test-card.active .test-icon {
+    @apply text-white;
+  }
+  
+  .test-card.active .test-info {
+    @apply bg-white bg-opacity-20 text-white;
+  }
+  
+  .result-card {
+    @apply card p-6 mb-4;
+  }
+  
+  .result-card.top-result {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-large transform scale-105;
+  }
+  
+  .gujarati-text {
+    font-family: 'Noto Sans Gujarati', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+}
