@@ -41,33 +41,33 @@ const TestSelection = ({ onTestSelect, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4">
+    <div className="min-h-screen py-3 sm:py-4 md:py-6 lg:py-8 px-2 sm:px-3 md:px-4 lg:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div 
-          className="flex items-center justify-between mb-12"
+          className="flex flex-col sm:flex-row items-center justify-between mb-6 sm:mb-8 md:mb-10 lg:mb-12 gap-2 sm:gap-3 md:gap-4"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
+            className="flex items-center gap-1.5 sm:gap-2 text-gray-600 hover:text-gray-800 transition-colors order-1 sm:order-none text-xs sm:text-sm md:text-base touch-manipulation active:scale-95"
           >
-            <ArrowLeft className="w-5 h-5" />
-            પાછળ જાઓ
+            <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 flex-shrink-0" />
+            <span className="whitespace-nowrap">પાછળ જાઓ</span>
           </button>
           
-          <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-gradient gujarati-text">
+          <div className="text-center order-2 sm:order-none px-1 sm:px-2 md:px-4">
+            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gradient gujarati-text break-words leading-tight">
               પરીક્ષણ પસંદ કરો
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-1 sm:mt-1.5 md:mt-2 text-xs sm:text-sm md:text-base break-words">
               Select a test to begin your assessment
             </p>
           </div>
           
-          <div className="w-20"></div> {/* Spacer for centering */}
+          <div className="w-12 sm:w-16 md:w-20 order-3 sm:order-none"></div> {/* Spacer for centering */}
         </motion.div>
 
         {/* Test Cards Grid */}
@@ -75,19 +75,19 @@ const TestSelection = ({ onTestSelect, onBack }) => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6"
         >
           {availableTests.map((test, index) => (
             <motion.div
               key={test.id}
               variants={cardVariants}
               whileHover={{ 
-                y: -8, 
-                scale: 1.02,
+                y: -2, 
+                scale: 1.01,
                 transition: { duration: 0.2 }
               }}
-              whileTap={{ scale: 0.98 }}
-              className={`test-card cursor-pointer transition-all duration-300 ${
+              whileTap={{ scale: 0.97 }}
+              className={`test-card touch-manipulation active:scale-95 ${
                 selectedTest?.id === test.id ? 'ring-4 ring-primary-500 ring-opacity-50' : ''
               }`}
               onClick={() => handleTestSelect(test)}
@@ -98,7 +98,7 @@ const TestSelection = ({ onTestSelect, onBack }) => {
             >
               {/* Test Icon */}
               <div 
-                className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-3xl"
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-18 mx-auto mb-3 sm:mb-4 md:mb-5 lg:mb-6 rounded-full flex items-center justify-center text-xl sm:text-2xl md:text-3xl lg:text-4xl flex-shrink-0"
                 style={{ 
                   backgroundColor: `${test.color}20`,
                   color: test.color
@@ -108,29 +108,29 @@ const TestSelection = ({ onTestSelect, onBack }) => {
               </div>
 
               {/* Test Info */}
-              <div className="space-y-3">
-                <h3 className="text-xl font-semibold text-gray-800 gujarati-text">
+              <div className="space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-4 min-w-0 flex-1 flex flex-col">
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-800 gujarati-text break-words leading-tight flex-shrink-0">
                   {test.name}
                 </h3>
                 
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-gray-600 gujarati-text text-xs sm:text-sm md:text-base break-words leading-relaxed flex-1">
                   {test.description}
                 </p>
 
                 {/* Test Stats */}
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <HelpCircle className="w-4 h-4" />
-                    <span>{test.questions} પ્રશ્નો</span>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs sm:text-sm text-gray-500 min-w-0 mt-auto space-y-1 sm:space-y-0">
+                  <div className="flex items-center gap-1 min-w-0 flex-1">
+                    <HelpCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 flex-shrink-0" />
+                    <span className="break-words text-xs sm:text-sm">{test.questions} પ્રશ્નો</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{test.duration}</span>
+                  <div className="flex items-center gap-1 min-w-0 flex-1 sm:justify-end">
+                    <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 flex-shrink-0" />
+                    <span className="break-words text-xs sm:text-sm">{test.duration}</span>
                   </div>
                 </div>
 
                 {/* Sections Info */}
-                <div className="text-xs text-gray-500">
+                <div className="text-xs sm:text-sm text-gray-500 break-words flex-shrink-0">
                   <span className="font-medium">વિભાગો:</span> {test.sections.length}
                 </div>
 
@@ -139,9 +139,9 @@ const TestSelection = ({ onTestSelect, onBack }) => {
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute top-4 right-4 w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center"
+                    className="absolute top-2 sm:top-3 md:top-4 lg:top-5 right-2 sm:right-3 md:right-4 lg:right-5 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 bg-primary-500 rounded-full flex items-center justify-center z-10"
                   >
-                    <CheckCircle className="w-4 h-4 text-white" />
+                    <CheckCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 text-white" />
                   </motion.div>
                 )}
               </div>
@@ -151,16 +151,16 @@ const TestSelection = ({ onTestSelect, onBack }) => {
 
         {/* Instructions */}
         <motion.div 
-          className="mt-12 text-center"
+          className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
         >
-          <div className="bg-white rounded-xl p-6 shadow-soft max-w-2xl mx-auto">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3 gujarati-text">
+          <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 shadow-soft max-w-2xl mx-auto">
+            <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 mb-2 sm:mb-2.5 md:mb-3 gujarati-text break-words">
               💡 પરીક્ષણ વિશે
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed gujarati-text">
+            <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed gujarati-text break-words">
               દરેક પરીક્ષણ તમારી વ્યક્તિત્વ અને કારકિર્દી માટેની તમારી તૈયારીનું મૂલ્યાંકન કરે છે. 
               તમે એક સમયે એક પરીક્ષણ લઈ શકો છો અને પરિણામો તમારા ભવિષ્ય માટે માર્ગદર્શન આપશે.
             </p>

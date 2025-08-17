@@ -67,34 +67,36 @@ const AboutPage = ({ onBack }) => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="flex items-center space-x-4 mb-6">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 md:mb-8">
+          <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 mb-3 sm:mb-4 md:mb-6">
             {onBack && (
               <motion.button
-                className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 flex-shrink-0"
                 onClick={onBack}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </motion.button>
             )}
-            <div>
-              <h1 className="text-3xl font-bold text-gray-800 gujarati-text">આપણા વિશે</h1>
-              <p className="text-gray-600">About Us</p>
+            <div className="min-w-0 flex-1">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 gujarati-text break-words leading-tight">
+                આપણા વિશે
+              </h1>
+              <p className="text-gray-600 text-xs sm:text-sm md:text-base break-words">About Us</p>
             </div>
           </div>
           
           <div className="prose max-w-none">
-            <p className="text-lg text-gray-700 leading-relaxed mb-6 gujarati-text">
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-3 sm:mb-4 md:mb-6 gujarati-text break-words">
               કારકિર્દી મૂલ્યાંકન સિસ્ટમ એક વ્યાપક મનોવૈજ્ઞાનિક પરીક્ષણ પ્લેટફોર્મ છે જે વિદ્યાર્થીઓ અને વ્યવસાયિકોને 
               તેમની કારકિર્દી માટે યોગ્ય માર્ગ પસંદ કરવામાં મદદ કરે છે. આ સિસ્ટમ આઠ વિવિધ પ્રકારના પરીક્ષણો દ્વારા 
               વ્યક્તિની વ્યક્તિત્વ, બુદ્ધિમતા, રુચિઓ અને કારકિર્દી માટેની તૈયારીનું મૂલ્યાંકન કરે છે.
             </p>
             
-            <p className="text-lg text-gray-700 leading-relaxed mb-6 gujarati-text">
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-3 sm:mb-4 md:mb-6 gujarati-text break-words">
               અમારો ધ્યેય ભારતીય વિદ્યાર્થીઓને તેમની માતૃભાષામાં ગુણવતાયુક્ત કારકિર્દી માર્ગદર્શન પ્રદાન કરવાનો છે. 
               આ પરીક્ષણો વૈજ્ઞાનિક પદ્ધતિઓ પર આધારિત છે અને વિશ્વભરમાં માન્યતા પ્રાપ્ત છે.
             </p>

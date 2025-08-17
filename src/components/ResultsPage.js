@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Download, Trophy, BarChart3, PieChart, Target, Brain, Home, Star, Award, Users } from 'lucide-react';
+import { Award, Download, BarChart3, PieChart, Trophy, Star, Target, Brain, Home } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart as RechartsPieChart, Cell, Pie } from 'recharts';
 import { mbtiTypes } from '../data/testConfig.js';
 
 const ResultsPage = ({ results, test, onNewTest, onHome }) => {
-  const { testId, testName, topResult, allResults, totalQuestions, answeredQuestions, mbtiType, scores } = results;
+  const { testId, testName, topResult, allResults, totalQuestions, answeredQuestions, mbtiType } = results;
 
   const downloadResults = () => {
     let resultsText = `${testName} પરિણામો\n`;
@@ -78,26 +78,30 @@ const ResultsPage = ({ results, test, onNewTest, onHome }) => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header with Test Summary */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full mb-4">
-              <Award className="w-8 h-8 text-white" />
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-5 md:mb-6">
+          <div className="text-center mb-3 sm:mb-4 md:mb-6">
+            <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full mb-2 sm:mb-3 md:mb-4">
+              <Award className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-800 gujarati-text">{testName} પરિણામો</h1>
-            <p className="text-gray-600 mt-2">તમારા જવાબોના આધારે તમારા પરિણામો</p>
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 gujarati-text break-words leading-tight">
+              {testName} પરિણામો
+            </h1>
+            <p className="text-gray-600 mt-1 sm:mt-2 text-xs sm:text-sm md:text-base break-words">
+              તમારા જવાબોના આધારે તમારા પરિણામો
+            </p>
           </div>
           
           {/* Test Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
-            <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
-              <div className="text-2xl font-bold text-blue-600">{totalQuestions}</div>
-              <div className="text-sm text-gray-600">કુલ પ્રશ્નો</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4 text-center mb-3 sm:mb-4 md:mb-6">
+            <div className="bg-blue-50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 border border-blue-200">
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">{totalQuestions}</div>
+              <div className="text-xs sm:text-sm text-gray-600 break-words">કુલ પ્રશ્નો</div>
             </div>
-            <div className="bg-green-50 rounded-xl p-4 border border-green-200">
-              <div className="text-2xl font-bold text-green-600">{answeredQuestions}</div>
-              <div className="text-sm text-gray-600">જવાબ આપેલા</div>
+            <div className="bg-green-50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 border border-green-200">
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-green-600">{answeredQuestions}</div>
+              <div className="text-xs sm:text-sm text-gray-600 break-words">જવાબ આપેલા</div>
             </div>
-            <div className="bg-purple-50 rounded-xl p-4 border border-purple-200">
+            <div className="bg-purple-50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 border border-purple-200">
               <div className="text-2xl font-bold text-purple-600">
                 {Math.round((answeredQuestions / totalQuestions) * 100)}%
               </div>
@@ -188,22 +192,29 @@ const ResultsPage = ({ results, test, onNewTest, onHome }) => {
         )}
 
         {/* Charts Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
           {/* Bar Chart */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
+            className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100"
           >
             <div className="flex items-center space-x-2 mb-4">
-              <BarChart3 className="w-6 h-6 text-primary-500" />
-              <h3 className="text-xl font-semibold text-gray-800">પરિણામોનો બાર ચાર્ટ</h3>
+              <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-primary-500" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800">પરિણામોનો બાર ચાર્ટ</h3>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
               <BarChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" angle={-45} textAnchor="end" height={80} />
-                <YAxis />
+                <XAxis 
+                  dataKey="name" 
+                  angle={-45} 
+                  textAnchor="end" 
+                  height={80} 
+                  fontSize={12}
+                  tick={{ fontSize: 10 }}
+                />
+                <YAxis fontSize={12} />
                 <Tooltip formatter={(value) => [`${value}%`, 'ટકાવારી']} />
                 <Bar dataKey="percentage" fill="#3B82F6" />
               </BarChart>
@@ -214,13 +225,13 @@ const ResultsPage = ({ results, test, onNewTest, onHome }) => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
+            className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100"
           >
             <div className="flex items-center space-x-2 mb-4">
-              <PieChart className="w-6 h-6 text-primary-500" />
-              <h3 className="text-xl font-semibold text-gray-800">પરિણામોનો પાઈ ચાર્ટ</h3>
+              <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-primary-500" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800">પરિણામોનો પાઈ ચાર્ટ</h3>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
               <RechartsPieChart>
                 <Pie
                   data={pieData}
@@ -246,40 +257,40 @@ const ResultsPage = ({ results, test, onNewTest, onHome }) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-gray-100"
+          className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 mb-6 border border-gray-100"
         >
-          <div className="flex items-center space-x-2 mb-6">
-            <Target className="w-6 h-6 text-primary-500" />
-            <h3 className="text-xl font-semibold text-gray-800">બધા પરિણામો</h3>
+          <div className="flex items-center space-x-2 mb-4 sm:mb-6">
+            <Target className="w-5 h-5 sm:w-6 sm:h-6 text-primary-500" />
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800">બધા પરિણામો</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {allResults.map((result, index) => (
               <div
                 key={result.dimension}
-                className={`bg-gray-50 rounded-xl p-4 hover:shadow-md transition-shadow border ${
+                className={`bg-gray-50 rounded-lg sm:rounded-xl p-3 sm:p-4 hover:shadow-md transition-shadow border ${
                   index === 0 ? 'border-primary-200 bg-primary-50' : 'border-gray-200'
                 }`}
               >
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="font-semibold text-gray-800 gujarati-text">{result.name}</h4>
-                  <span className={`text-lg font-bold ${
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <h4 className="font-semibold text-gray-800 gujarati-text text-sm sm:text-base">{result.name}</h4>
+                  <span className={`text-base sm:text-lg font-bold ${
                     index === 0 ? 'text-primary-600' : 'text-primary-500'
                   }`}>
                     {result.percentage}%
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
+                <div className="w-full bg-gray-200 rounded-full h-2 sm:h-3 mb-2">
                   <div
-                    className="bg-gradient-to-r from-primary-500 to-secondary-500 h-3 rounded-full transition-all duration-500"
+                    className="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 sm:h-3 rounded-full transition-all duration-500"
                     style={{ width: `${result.percentage}%` }}
                   />
                 </div>
                 {result.score && (
-                  <p className="text-sm text-gray-600">સ્કોર: {result.score}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">સ્કોર: {result.score}</p>
                 )}
                 {index === 0 && (
                   <div className="flex items-center mt-2">
-                    <Star className="w-4 h-4 text-yellow-500 mr-1" />
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 mr-1" />
                     <span className="text-xs text-yellow-600 font-medium">ટોપ પરિણામ</span>
                   </div>
                 )}
@@ -296,7 +307,7 @@ const ResultsPage = ({ results, test, onNewTest, onHome }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Brain className="w-5 h-5" />
+            <Brain className="w-4 h-4 sm:w-5 sm:h-5" />
             <span>ફરીથી પરીક્ષણ આપો</span>
           </motion.button>
           
@@ -306,7 +317,7 @@ const ResultsPage = ({ results, test, onNewTest, onHome }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Home className="w-5 h-5" />
+            <Home className="w-4 h-4 sm:w-5 sm:h-5" />
             <span>ઘરે જાઓ</span>
           </motion.button>
         </div>

@@ -74,25 +74,27 @@ const ContactPage = ({ onBack }) => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="flex items-center space-x-4 mb-6">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 md:mb-8">
+          <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 mb-3 sm:mb-4 md:mb-6">
             {onBack && (
               <motion.button
-                className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 flex-shrink-0"
                 onClick={onBack}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <ArrowLeft className="w-6 h-6 text-gray-600" />
+                <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-600" />
               </motion.button>
             )}
-            <div>
-              <h1 className="text-3xl font-bold text-gray-800 gujarati-text">સંપર્ક કરો</h1>
-              <p className="text-gray-600">Contact Us</p>
+            <div className="min-w-0 flex-1">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 gujarati-text break-words leading-tight">
+                સંપર્ક કરો
+              </h1>
+              <p className="text-gray-600 text-xs sm:text-sm md:text-base break-words">Contact Us</p>
             </div>
           </div>
           
-          <p className="text-lg text-gray-700 leading-relaxed gujarati-text">
+          <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed gujarati-text break-words">
             કારકિર્દી મૂલ્યાંકન સિસ્ટમ વિશે કોઈપણ પ્રશ્નો હોય તો અમારો સંપર્ક કરો. 
             અમે તમને મદદ કરવા માટે તૈયાર છીએ.
           </p>

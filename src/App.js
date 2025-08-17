@@ -13,7 +13,6 @@ function App() {
   const [currentScreen, setCurrentScreen] = useState('home');
   const [selectedTest, setSelectedTest] = useState(null);
   const [testResults, setTestResults] = useState(null);
-  const [testData, setTestData] = useState(null);
 
   const navigateTo = (screen) => {
     setCurrentScreen(screen);
@@ -33,7 +32,6 @@ function App() {
     setCurrentScreen('home');
     setSelectedTest(null);
     setTestResults(null);
-    setTestData(null);
   };
 
   const screenVariants = {
@@ -57,97 +55,105 @@ function App() {
         testName={selectedTest?.name}
       />
       
-      <AnimatePresence mode="wait">
-        {currentScreen === 'home' && (
-          <motion.div
-            key="home"
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={screenVariants}
-            transition={screenTransition}
-          >
-            <HomePage onStart={() => navigateTo('selection')} />
-          </motion.div>
-        )}
+      <div className="w-full max-w-7xl mx-auto px-2 sm:px-3 md:px-4 lg:px-6">
+        <AnimatePresence mode="wait">
+          {currentScreen === 'home' && (
+            <motion.div
+              key="home"
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={screenVariants}
+              transition={screenTransition}
+              className="w-full"
+            >
+              <HomePage onStart={() => navigateTo('selection')} />
+            </motion.div>
+          )}
 
-        {currentScreen === 'selection' && (
-          <motion.div
-            key="selection"
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={screenVariants}
-            transition={screenTransition}
-          >
-            <TestSelection 
-              onTestSelect={startTest}
-              onBack={() => navigateTo('home')}
-            />
-          </motion.div>
-        )}
+          {currentScreen === 'selection' && (
+            <motion.div
+              key="selection"
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={screenVariants}
+              transition={screenTransition}
+              className="w-full"
+            >
+              <TestSelection 
+                onTestSelect={startTest}
+                onBack={() => navigateTo('home')}
+              />
+            </motion.div>
+          )}
 
-        {currentScreen === 'quiz' && selectedTest && (
-          <motion.div
-            key="quiz"
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={screenVariants}
-            transition={screenTransition}
-          >
-            <QuizInterface 
-              test={selectedTest}
-              onComplete={completeTest}
-              onBack={() => navigateTo('selection')}
-            />
-          </motion.div>
-        )}
+          {currentScreen === 'quiz' && selectedTest && (
+            <motion.div
+              key="quiz"
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={screenVariants}
+              transition={screenTransition}
+              className="w-full"
+            >
+              <QuizInterface 
+                test={selectedTest}
+                onComplete={completeTest}
+                onBack={() => navigateTo('selection')}
+              />
+            </motion.div>
+          )}
 
-        {currentScreen === 'results' && testResults && (
-          <motion.div
-            key="results"
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={screenVariants}
-            transition={screenTransition}
-          >
-            <ResultsPage 
-              results={testResults}
-              test={selectedTest}
-              onNewTest={() => navigateTo('selection')}
-              onHome={() => resetApp()}
-            />
-          </motion.div>
-        )}
+          {currentScreen === 'results' && testResults && (
+            <motion.div
+              key="results"
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={screenVariants}
+              transition={screenTransition}
+              className="w-full"
+            >
+              <ResultsPage 
+                results={testResults}
+                test={selectedTest}
+                onNewTest={() => navigateTo('selection')}
+                onHome={() => resetApp()}
+              />
+            </motion.div>
+          )}
 
-        {currentScreen === 'about' && (
-          <motion.div
-            key="about"
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={screenVariants}
-            transition={screenTransition}
-          >
-            <AboutPage onBack={() => navigateTo('home')} />
-          </motion.div>
-        )}
+          {currentScreen === 'about' && (
+            <motion.div
+              key="about"
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={screenVariants}
+              transition={screenTransition}
+              className="w-full"
+            >
+              <AboutPage onBack={() => navigateTo('home')} />
+            </motion.div>
+          )}
 
-        {currentScreen === 'contact' && (
-          <motion.div
-            key="contact"
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={screenVariants}
-            transition={screenTransition}
-          >
-            <ContactPage onBack={() => navigateTo('home')} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {currentScreen === 'contact' && (
+            <motion.div
+              key="contact"
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={screenVariants}
+              transition={screenTransition}
+              className="w-full"
+            >
+              <ContactPage onBack={() => navigateTo('home')} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
